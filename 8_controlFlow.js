@@ -74,9 +74,58 @@ for (let key in ratings) {
   }
   console.log(`Watched movie rated - ${rating}`);
 }
-console.log(`out of rating system`)
+console.log(`out of rating system`);
+
 // switch to make rating logic
 
-// global local scope using nested if
+const switchRating = 0;
+switch (switchRating) {
+  case 0:
+    console.log("Raddi film.");
+    break;
+  case 1:
+    console.log("Bss film.");
+    break;
+
+  case 2:
+    console.log("Ek thi film.");
+    break;
+  case 3:
+    console.log("Theek film.");
+    break;
+  case 4:
+    console.log("Theek thaak film.");
+    break;
+  case 5:
+    console.log("Wah kya mast film hai.");
+    break;
+  default:
+    console.log("Ye kya dekhliya.");
+}
+
+// global local scope
+const meriMaan = "tu chla ja";
+if (meriMaan.length > 2) {
+  let metri = 2;
+  let tetri = 3;
+  {
+    let metriBecomeTetri = metri + 1;
+    let metri = metri + 1;
+    console.log("metri>>>", metri);
+    console.log("metriBecomeTetri>>>", metriBecomeTetri);
+  }
+  {
+    tetri += tetri;
+  }
+  console.log("metri>>>", metri);
+  console.log("metriBecomeTetri>>>", metriBecomeTetri);
+  console.log("tetri>>>", tetri);
+}
+
+console.log("metri>>>", metri);
 
 // ternary operator
+
+const jaliKya = true;
+
+jaliKya ? console.log("BHAG JAA YHA SE") : console.log("BHAI HAI TU MERA");
