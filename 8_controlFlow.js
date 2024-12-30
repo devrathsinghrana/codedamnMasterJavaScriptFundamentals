@@ -109,20 +109,22 @@ if (meriMaan.length > 2) {
   let metri = 2;
   let tetri = 3;
   {
-    let metriBecomeTetri = metri + 1;
-    let metri = metri + 1;
+    let metri = 1;
     console.log("metri>>>", metri);
-    console.log("metriBecomeTetri>>>", metriBecomeTetri);
   }
   {
     tetri += tetri;
+    console.log("tetri>>>", tetri);
   }
   console.log("metri>>>", metri);
-  console.log("metriBecomeTetri>>>", metriBecomeTetri);
   console.log("tetri>>>", tetri);
 }
 
-console.log("metri>>>", metri);
+try {
+  console.log("metri>>>", metri);
+} catch (e) {
+  console.log("e>>", e);
+}
 
 // ternary operator
 
