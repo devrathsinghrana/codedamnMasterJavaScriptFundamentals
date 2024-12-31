@@ -69,3 +69,11 @@ neMyObj.age = 13;
 
 console.log("neMyObj>>>", neMyObj);
 console.log("myObj>>>", myObj);
+
+const newMyObj = { age: 34 };
+const newMyObj3 = { ...newMyObj };
+
+newMyObj3.age = 90;
+
+console.log("newMyObj>>>", newMyObj);
+console.log("newMyObj3>>>", newMyObj3);
