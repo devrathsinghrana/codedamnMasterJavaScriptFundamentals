@@ -5,11 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .list-item {
+            color: #fff;
+        }
+
+        .active {
+            background-color: green;
+            opacity: 0.5;
+        }
+
+        .in-active {
+            background-color: rgb(37, 36, 35);
+            opacity: 0.5;
+        }
+    </style>
 </head>
 
 <body>
     Open console to see output
-    <script src="10_objectLiterals.js"></script>
+    <h1 id="h1-heading">My list</h1>
+    <ul class="list">
+        <li class="list-item active">List content 1</li>
+        <li class="list-item in-active">List content 2</li>
+        <li class="list-item in-active">List content 3</li>
+        <li class="list-item in-active">List content 4</li>
+        <li class="list-item in-active">List content 5</li>
+    </ul>
+    <p>List End</p>
+    <script src="11_DOM.js"></script>
 </body>
 
 </html>
