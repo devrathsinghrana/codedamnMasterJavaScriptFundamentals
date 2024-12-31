@@ -47,3 +47,41 @@ const capitaliseWord = (word) =>
 console.log(capitaliseWord("hello")); // Output: 'Hello'
 console.log(capitaliseWord("mom")); // Output: 'Mom'
 console.log(capitaliseWord("dAD")); // Output: 'DAD'
+
+// Function vs methods
+// any function attached to an instance or object is method and rest is function
+
+const arrayForMethod = [1, 2, 3];
+console.log("arrayForMethod.push(4)", arrayForMethod.push(4)); //Appends new elements to the end of an array, and returns the new length of the array. push is a method
+
+// callback function is passing function as an argument or returning it or invoking it inside another function is callback function.
+// make addition multiplication callbacks
+
+const multiply = (a, b) => a * b;
+const add = (a, b) => a + b;
+
+const callbackFn = function (num1, num2, addition, multiplication) {
+  console.log(
+    `Add: ${addition(num1, num2)} and Multiplication: ${multiplication(
+      num1,
+      num2
+    )}`
+  );
+};
+
+callbackFn(1, 3, add, multiply);
+
+//forEach
+const students = ["sus1", "sus2", "sus3"];
+students.forEach((student) => console.log(student));
+
+//reverse sentence
+
+const reverseSentence = (sentence) => {
+  // Write your code here
+  const wordArray = sentence.split(" ");
+  wordArray.reverse();
+  return wordArray.join(" ");
+};
+
+console.log("reverseSentence", reverseSentence("My name is Ram!"));
