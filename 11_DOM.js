@@ -32,7 +32,10 @@ const addLiInExistingList = (position, listItemToAdd) => {
   listContainer.insertBefore(listItemToAdd, listItems[position - 1]);
 };
 const reqLi = document.createElement("li");
-reqLi.innerHTML = `Take me to the <strong>sky!</strong>`;
+reqLi.style.listStyle = "none";
+reqLi.style.color = "#fff";
+reqLi.style.background = "#f00";
+reqLi.innerHTML = `Take me to the <strong>sky!</strong> & <i>${heading.innerText}</i>`;
 addLiInExistingList(3, reqLi);
 
 // Attributes(Get/Set) - anything inside html tag. setAttribute getAttribute
