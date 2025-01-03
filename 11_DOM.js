@@ -23,6 +23,18 @@ console.log("heading>>>", heading);
 
 //Modifying DOM innerText innerHTML. adding html li in whatever position inside ul using innerhtml
 
+const addLiInExistingList = (position, listItemToAdd) => {
+  const listContainer = document.querySelector(".list");
+  const listItems = document.querySelectorAll(".list-item");
+  const existingListItemsCount = listItems.length;
+  if (position > existingListItemsCount || position < 1)
+    return "Enter Valid position";
+  listContainer.insertBefore(listItemToAdd, listItems[position - 1]);
+};
+const reqLi = document.createElement("li");
+reqLi.innerHTML = `Take me to the <strong>sky!</strong>`;
+addLiInExistingList(3, reqLi);
+
 // Attributes(Get/Set) - anything inside html tag. setAttribute getAttribute
 
 //.style for adding styles instead of overriding done by setAttribute. js cant have hyphenated property names so use camelcase property names as hypen will be considered as minus by js for a property name
