@@ -62,3 +62,54 @@ console.log("activeListItem>>>", activeListItem);
 
 const activeListItem3 = document.querySelector(".active");
 console.log("activeListItem3>>>", activeListItem3);
+
+// Relationships - (Parent, Child, Siblings)
+// .children and forEach
+
+const listChildren = listContainer.children; //gives html colllection so need to convert to arrayfor iterating
+const listChildrenArray = Array.from(listChildren);
+listChildrenArray.forEach((liItem) => console.log("liItem>>>", liItem));
+
+//.parentElement and chaining it
+//chaining parent and child
+const listParent = listContainer.parentElement;
+console.log("listParent>>>", listParent);
+const listChildrenByChaining = listParent.children;
+console.log("listChildrenByChaining>>>", listChildrenByChaining);
+console.log("listChildrenByChaining len>>>", listChildrenByChaining.length);
+const listChildrenByChainingArray = Array.from(listChildrenByChaining);
+listChildrenByChainingArray.forEach(
+  (val) => val.children.length && console.log("val.children>>>", val.children)
+);
+
+// .nextElementSibling
+console.log(
+  "listContainer.nextElementSibling",
+  listContainer.nextElementSibling
+);
+// .previousElementSibling
+console.log(
+  "listContainer.previousElementSibling",
+  listContainer.previousElementSibling
+);
+
+//Events - btn click add products from checked li and removed products from check li. append , prepend
+//event bubbling and delegation is instead of adding individual li we can create separate click event to add it to parent ul. stopPropagation. event object helps us to keep track of everything.
+
+
+//make an alert when copy li content using copy event
+const copyLiClBk = (event) => {
+  console.log("event", event);
+  if (event.target.tagName === "LI") {
+    alert(event.target.textContent);
+  }
+};
+listContainer.addEventListener("copy", copyLiClBk);
+
+//mouse event, mousemove, wheel - clientX,clientY position of my mouse along respective axis. screenX and screenY is position from actual screen as we may scroll down.
+
+document.body.addEventListener("mousemove", (ev) =>
+  console.log("mousemove", ev)
+);
+
+document.body.addEventListener("wheel", (ev) => console.log("wheel", ev));
