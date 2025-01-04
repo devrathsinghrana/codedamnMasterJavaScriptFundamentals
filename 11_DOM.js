@@ -96,6 +96,33 @@ console.log(
 //Events - btn click add products from checked li and removed products from check li. append , prepend
 //event bubbling and delegation is instead of adding individual li we can create separate click event to add it to parent ul. stopPropagation. event object helps us to keep track of everything.
 
+const addLiBtn = document.querySelector(".add-li-btn");
+
+const addLiElemClBk = (ev) => {
+  ev.stopPropagation();
+  const li = document.createElement("li");
+  li.textContent = "LI added";
+  li.style.listStyle = "none";
+  /*
+  Why li is only prepended
+  The issue likely arises because the same li element is being appended and prepended to listContainer. When you use append or prepend with the same DOM element, it moves the element to the new position rather than duplicating it.
+
+Explanation
+In the DOM, an element can only exist in one place at a time. When you create an li element and append it to listContainer, it becomes part of the DOM tree. If you then prepend the same li, it is moved to the beginning of listContainer. It doesn't duplicate or leave a copy in the previous location.
+  */
+  listContainer.append(li);
+  listContainer.prepend(li);
+};
+
+const removeLiElemClBk = (event) => {
+  event.stopPropagation();
+  if (event.target.tagName === "LI") {
+    event.target.remove();
+  }
+};
+
+addLiBtn.addEventListener("click", addLiElemClBk);
+listContainer.addEventListener("click", removeLiElemClBk);
 
 //make an alert when copy li content using copy event
 const copyLiClBk = (event) => {
