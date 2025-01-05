@@ -93,7 +93,7 @@ console.log(
   listContainer.previousElementSibling
 );
 
-//Events - btn click add products from checked li and removed products from check li. append , prepend
+//Events - btn click add products from and removed products from clicked li. append , prepend
 //event bubbling and delegation is instead of adding individual li we can create separate click event to add it to parent ul. stopPropagation. event object helps us to keep track of everything.
 
 const addLiBtn = document.querySelector(".add-li-btn");
