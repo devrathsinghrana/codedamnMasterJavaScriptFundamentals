@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form and form events</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        #myFeedbackForm {
+            background-color: #ffe4c4b5;
+            display: grid;
+            grid-template-columns: 1fr repeat(4, 0.5fr) 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        #userNameInput {
+            grid-column: 1/4;
+        }
+
+        #userEmailInput {
+            grid-column: 5/7;
+        }
+
+        #feedbackCommentTextArea{
+            grid-column: 1/span 6;
+
+        }
+
+        #submitBtn {
+            grid-column: 2/6;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Feedback form</h1>
+        <form id="myFeedbackForm">
+            <input type="text" name="userName" id="userNameInput" placeholder="userName">
+            <input type="email" name="userEmail" id="userEmailInput" placeholder="userEmail">
+            <textarea name="feedbackComment" id="feedbackCommentTextArea" placeholder="feedbackComment"></textarea>
+            <input type="submit" value="Submit" id="submitBtn">
+        </form>
+        <script src="12_FormAndFormEvents.js"></script>
+    </main>
+</body>
+
+</html>
