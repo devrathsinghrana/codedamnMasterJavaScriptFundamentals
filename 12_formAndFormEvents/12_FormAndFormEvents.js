@@ -50,6 +50,38 @@ const formSubmit = (ev) => {
 myFeedbackForm.addEventListener("submit", formSubmit);
 
 //keyup - give border to input green or red based on this keyboard event
+userNameInput.addEventListener("keyup", (event) => {
+  const usrNameInputValue = event.target.value;
+  const userNamePattern = /^[a-zA-z]{1,8}[0-9]{1,3}$/;
+  isValidUsername = userNamePattern.test(usrNameInputValue);
+  if (isValidUsername) {
+    event.target.style.border = "2px solid green";
+    return;
+  }
+  event.target.style.border = "2px solid red";
+});
+
+userEmailInput.addEventListener("keyup", (event) => {
+  const userEmailInputValue = event.target.value;
+  const emailPattern = /^[a-z]{1,9}.[a-z]{1,9}@[a-z]{3,6}.com$/;
+  isValidEmail = emailPattern.test(userEmailInputValue);
+  if (isValidEmail) {
+    event.target.style.border = "2px solid green";
+    return;
+  }
+  event.target.style.border = "2px solid red";
+});
+
+feedbackComment.addEventListener("keyup", (event) => {
+  const feedbackCommentValue = event.target.value;
+  const feedbackPattern = /^[a-zA-z]{1,100}$/;
+  isValidFeedback = feedbackPattern.test(feedbackCommentValue);
+  if (isValidFeedback) {
+    event.target.style.border = "2px solid green";
+    return;
+  }
+  event.target.style.border = "2px solid red";
+});
 
 // Create the required functions here
 /**
