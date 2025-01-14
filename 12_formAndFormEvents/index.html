@@ -26,13 +26,33 @@
             grid-column: 5/7;
         }
 
-        #feedbackCommentTextArea{
+        #feedbackCommentTextArea {
             grid-column: 1/span 6;
 
         }
 
         #submitBtn {
             grid-column: 2/6;
+        }
+
+        .success {
+            background-color: green;
+            padding: 10px;
+        }
+
+        .error {
+            background-color: red;
+            padding: 10px;
+        }
+
+        .accepted{
+            border-color: green;
+
+        }
+
+        .rejected{
+            border-color: red;
+
         }
     </style>
 </head>
@@ -46,6 +66,7 @@
             <textarea name="feedbackComment" id="feedbackCommentTextArea" placeholder="feedbackComment"></textarea>
             <input type="submit" value="Submit" id="submitBtn">
         </form>
+        <p></p>
         <script src="12_FormAndFormEvents.js"></script>
     </main>
 </body>

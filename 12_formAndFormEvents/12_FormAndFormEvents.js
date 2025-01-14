@@ -11,6 +11,7 @@ const submitBtn = document.getElementById("submitBtn");
 const userNameInput = document.getElementById("userNameInput");
 const userEmailInput = document.getElementById("userEmailInput");
 const feedbackComment = document.getElementById("feedbackCommentTextArea");
+const pTag = document.querySelector("p");
 
 const formSubmit = (ev) => {
   ev.preventDefault();
@@ -36,9 +37,19 @@ const formSubmit = (ev) => {
     isValidFeedback,
     isValidUsername
   );
+
+  //target p tag and show success or error message based on validations above
+  if (isValidEmail && isValidFeedback && isValidUsername) {
+    pTag.innerText = "It is fine";
+    pTag.style.color = "green";
+  } else {
+    pTag.innerText = "There are some validation errors";
+    pTag.style.color = "red";
+  }
 };
 myFeedbackForm.addEventListener("submit", formSubmit);
 
+//keyup - give border to input green or red based on this keyboard event
 
 // Create the required functions here
 /**
@@ -47,22 +58,22 @@ myFeedbackForm.addEventListener("submit", formSubmit);
  * @returns {Array} An array of phoneNumbers
  */
 function matchPhoneNumbers(input) {
-	const numberArray = input.split("").filter(item=>/^[0-9]$/.test(item))
-	const totalPhoneNumbers = numberArray.length/10;
-	const phoneNumbersArray=[]
-	let start=0;
-	let end=9;
-	for(let i=0;i<totalPhoneNumbers;i++){
-		const phoneNumerReq=[]
-		while(start<=end){
-			phoneNumerReq.push(numberArray[start])
-			start++;
-		}
-		start=end+1;
-		end=end+10;
-		phoneNumbersArray.push(phoneNumerReq.join(""))
-	}
-	return phoneNumbersArray;
+  const numberArray = input.split("").filter((item) => /^[0-9]$/.test(item));
+  const totalPhoneNumbers = numberArray.length / 10;
+  const phoneNumbersArray = [];
+  let start = 0;
+  let end = 9;
+  for (let i = 0; i < totalPhoneNumbers; i++) {
+    const phoneNumerReq = [];
+    while (start <= end) {
+      phoneNumerReq.push(numberArray[start]);
+      start++;
+    }
+    start = end + 1;
+    end = end + 10;
+    phoneNumbersArray.push(phoneNumerReq.join(""));
+  }
+  return phoneNumbersArray;
 }
 
 /**
@@ -71,7 +82,9 @@ function matchPhoneNumbers(input) {
  * @returns {string}
  */
 function replaceURLs(input) {
-	return input.split(" ").filter(item=>/^http[s]{0,1}:[/]{2}[a-zA-Z.]{1,}.com$/.test(item))
+  return input
+    .split(" ")
+    .filter((item) => /^http[s]{0,1}:[/]{2}[a-zA-Z.]{1,}.com$/.test(item));
 }
 
 /**
@@ -80,7 +93,7 @@ function replaceURLs(input) {
  * @returns {number}
  */
 function countWords(input) {
-	return input.split(" ").filter(item=>/^[a-zA-Z]{1,}$/.test(item)).length
+  return input.split(" ").filter((item) => /^[a-zA-Z]{1,}$/.test(item)).length;
 }
 
 /**
@@ -90,28 +103,31 @@ function countWords(input) {
  *
  */
 function removeExtraSpaces(input) {
-	return input.split(" ").filter(item=>/^[a-zA-Z.]{1,}$/.test(item)).join(" ")
+  return input
+    .split(" ")
+    .filter((item) => /^[a-zA-Z.]{1,}$/.test(item))
+    .join(" ");
 }
 
 // Sample Test Cases
 console.log(
-	matchPhoneNumbers(
-		"My old phone number was 123 456 7890 but now you can reach me at 987 654 3210."
-	)
+  matchPhoneNumbers(
+    "My old phone number was 123 456 7890 but now you can reach me at 987 654 3210."
+  )
 );
 console.log(
-	matchPhoneNumbers("The store number is 555 321 9876, please call us.")
+  matchPhoneNumbers("The store number is 555 321 9876, please call us.")
 );
 
 console.log(
-	replaceURLs(
-		"Find more info at https://example.com or contact us at http://help.example.com"
-	)
+  replaceURLs(
+    "Find more info at https://example.com or contact us at http://help.example.com"
+  )
 );
 console.log(
-	replaceURLs(
-		"The website http://mysite.com has been moved to https://newsite.com"
-	)
+  replaceURLs(
+    "The website http://mysite.com has been moved to https://newsite.com"
+  )
 );
 
 console.log(countWords("This string has five words."));
@@ -119,7 +135,5 @@ console.log(countWords("Counting words is easy!"));
 
 console.log(removeExtraSpaces("This   string    has   extra spaces."));
 console.log(
-	removeExtraSpaces(
-		"     Too many    spaces    at the beginning and end.     "
-	)
+  removeExtraSpaces("     Too many    spaces    at the beginning and end.     ")
 );
