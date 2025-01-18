@@ -81,7 +81,7 @@ const sumOfEvens = (arr) => {
   if (!arr.length) return 0;
 
   let initialValue = 0;
-  const evenNumbersSumReducer = (a, b) => (b % 2 === 0 && b > 0 ? a + b : a);
+  const evenNumbersSumReducer = (a, b) => (b % 2 === 0 ? a + b : a);
 
   return arr.reduce(evenNumbersSumReducer, initialValue);
 };
