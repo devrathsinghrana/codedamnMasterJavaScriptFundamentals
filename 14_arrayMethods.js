@@ -76,4 +76,16 @@ const totalTaxedProductsPrice = taxedProducts.reduce(reducerFn, initialValue);
 
 console.log("totalTaxedProductsPrice>>>", totalTaxedProductsPrice);
 
+const sumOfEvens = (arr) => {
+  // Write your code here
+  if (!arr.length) return 0;
+
+  let initialValue = 0;
+  const evenNumbersSumReducer = (a, b) => (b % 2 === 0 && b > 0 ? a + b : a);
+
+  return arr.reduce(evenNumbersSumReducer, initialValue);
+};
+
+console.log("sumOfEvens>>>", sumOfEvens([-5, 0, 5, -4, 1, 6, -3, 2, 7]));
+
 //sort mutates original array
