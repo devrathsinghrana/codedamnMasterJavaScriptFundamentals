@@ -188,3 +188,16 @@ console.log(
   "moviesKiLadiyaRatingDescending>>>",
   moviesKiLadiyaRatingDescending
 );
+
+//reverse()
+const ratingArrayForRev = [
+  3, 6, 4, 8, 2, 1, 5, 10, 100000, 1000, 100000000, 15,
+];
+ratingArrayForRev.reverse();
+console.log("ratingArrayReversed>>>", ratingArrayForRev);
+
+// chaining methods
+console.log(
+  "chained>>",
+  ratingArrayForRev.filter((item) => item < 5).map((item) => item + 1000)
+);
