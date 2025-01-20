@@ -51,7 +51,7 @@ const showHideTasks = (inputValue = "") => {
 };
 //target searchbox and apply keyup to filter list
 searchInput.addEventListener("keyup", (ev) => {
-  const inputValue = ev.target.value;
+  const inputValue = ev.target.value.toLowerCase();
   showHideTasks(inputValue);
 });
 
