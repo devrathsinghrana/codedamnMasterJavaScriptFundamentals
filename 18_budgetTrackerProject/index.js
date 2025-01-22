@@ -44,11 +44,37 @@ const addTransaction = (source, amount) => {
 
 const handleAddFormSubmit = (ev) => {
   ev.preventDefault();
-  const source = addForm.source.value;
-  const amount = addForm.amount.value;
+  const source = addForm.source.value.trim();
+  const amount = addForm.amount.value.trim();
+  if (!source.length > 0 || !amount.length > 0) {
+    return alert("enter valid input");
+  }
   addTransaction(source, amount);
   addForm.reset();
 };
+
+const deleteTransaction = (deletedNode, transactionId) => {
+  deletedNode.remove();
+  localStorage.setItem(
+    "transactions",
+    JSON.stringify(
+      transactions.filter(
+        (transaction) => Number(transaction.id) !== transactionId
+      )
+    )
+  );
+};
+
+const transactionsListClickHandler = (ev) => {
+  if (Array.from(ev.target.classList).includes("delete")) {
+    const deletedNode = ev.target.parentNode;
+    const transactionId = Number(deletedNode.getAttribute(["data-id"])) || 0;
+    deleteTransaction(deletedNode, transactionId);
+  }
+};
+
+expenseList.addEventListener("click", transactionsListClickHandler);
+incomeList.addEventListener("click", transactionsListClickHandler);
 
 const getTransactions = () => {
   if (transactions.length > 0) {
