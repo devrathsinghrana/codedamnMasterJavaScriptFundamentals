@@ -1,8 +1,33 @@
 //target add form and attach submit event and add value of transactions in localStorage
 const addForm = document.querySelector(".add");
-const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 const incomeList = document.querySelector(".income-list");
 const expenseList = document.querySelector(".expense-list");
+const balance = document.getElementById("balance");
+const income = document.getElementById("income");
+const expense = document.getElementById("expense");
+
+const updateTransactions = () => {
+  const updatedExpenses = transactions
+    .filter((transaction) => transaction.amount < 0)
+    .reduce(
+      (totalExpenses, expenseObj) =>
+        (totalExpenses += Math.abs(Number(expenseObj.amount))),
+      0
+    );
+
+  const updatedIncome = transactions
+    .filter((transaction) => transaction.amount > 0)
+    .reduce(
+      (totalIncome, incomeObj) => (totalIncome += Number(incomeObj.amount)),
+      0
+    );
+  const netBalance = updatedIncome - updatedExpenses;
+
+  income.innerText = updatedIncome;
+  expense.innerText = updatedExpenses;
+  balance.innerText = netBalance;
+};
 
 const generateTemplate = (source, amount, id, time) => {
   return `
@@ -50,19 +75,17 @@ const handleAddFormSubmit = (ev) => {
     return alert("enter valid input");
   }
   addTransaction(source, amount);
+  updateTransactions();
   addForm.reset();
 };
 
 const deleteTransaction = (deletedNode, transactionId) => {
   deletedNode.remove();
-  localStorage.setItem(
-    "transactions",
-    JSON.stringify(
-      transactions.filter(
-        (transaction) => Number(transaction.id) !== transactionId
-      )
-    )
+  transactions = transactions.filter(
+    (transaction) => Number(transaction.id) !== transactionId
   );
+  localStorage.setItem("transactions", JSON.stringify(transactions));
+  updateTransactions();
 };
 
 const transactionsListClickHandler = (ev) => {
@@ -87,6 +110,7 @@ const getTransactions = () => {
       );
     });
   }
+  updateTransactions();
 };
 
 getTransactions();
